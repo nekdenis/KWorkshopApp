@@ -11,6 +11,8 @@ import javax.inject.Singleton
 @Singleton
 interface AppComponent : ApplicationContextProvider {
 
+    fun inject(app: RealApp)
+
     class Initializer private constructor() {
         companion object {
             fun init(app: RealApp): AppComponent = DaggerAppComponent.builder()
