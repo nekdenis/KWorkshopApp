@@ -1,3 +1,3 @@
-include ':injector', ':repo', ':network', ':notifications', ':common' ,
-        ':featureB' //,
-        //':feature'
+include ':injector', ':repo', ':network', ':notifications', ':common',
+        ':featureA',
+        ':featureB'

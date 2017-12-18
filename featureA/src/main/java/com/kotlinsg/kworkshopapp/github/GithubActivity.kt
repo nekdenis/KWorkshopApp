@@ -7,6 +7,7 @@ import android.widget.TextView
 import com.kotlinsg.kworkshopapp.App
 import com.kotlinsg.kworkshopapp.GithubProject
 import com.kotlinsg.kworkshopapp.app.R
+import com.kotlinsg.kworkshopapp.di.GithubActivityComponent
 import com.kotlinsg.kworkshopapp.notification.di.NotificationUseCase
 import com.kotlinsg.kworkshopapp.tools.Toaster
 import javax.inject.Inject
@@ -23,8 +24,9 @@ class GithubActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_github)
-        (applicationContext as App).inject(this)
-
+        (applicationContext as App).run {
+            GithubActivityComponent.Initializer.init(getAppComponent(), getRepoComponent(), getNotificationComponent()).inject(this@GithubActivity)
+        }
         refreshButton = findViewById(R.id.stars_refresh) as Button
         starsCountText = findViewById(R.id.stars_count_text) as TextView
 

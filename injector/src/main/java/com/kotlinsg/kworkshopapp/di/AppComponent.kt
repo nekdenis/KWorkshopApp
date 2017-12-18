@@ -6,7 +6,11 @@ import javax.inject.Singleton
 
 
 @Component(
-        modules = [AppModule::class, ToolsModule::class]
+        modules = [
+            AppModule::class, ToolsModule::class,
+//                        FeatureARealModule::class
+            FeatureAFakeModule::class
+        ]
 )
 @Singleton
 interface AppComponent : ApplicationContextProvider {

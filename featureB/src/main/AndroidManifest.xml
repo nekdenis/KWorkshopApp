@@ -4,10 +4,8 @@
     package="com.kotlinsg.kworkshopapp.appB"
     >
 
-
-    <application
-        >
-        <activity android:name="com.kotlinsg.kworkshopapp.MainBActivity">
+    <application>
+        <activity android:name="com.kotlinsg.kworkshopapp.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

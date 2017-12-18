@@ -3,6 +3,7 @@ package com.kotlinsg.kworkshopapp.di
 import android.content.Context
 import com.kotlinsg.kworkshopapp.App
 import com.kotlinsg.kworkshopapp.RealApp
+import com.kotlinsg.kworkshopapp.actions.ShowGithubScreenAction
 import com.kotlinsg.kworkshopapp.tools.LoggerImpl
 import com.kotlinsg.kworkshopapp.tools.Toaster
 import com.kotlinsg.kworkshopapp.tools.ToasterImpl
@@ -42,6 +43,15 @@ class AppModule(private val app: RealApp) {
         @Singleton
         fun provideToaster(appContext: Context): Toaster {
             return ToasterImpl(appContext)
+        }
+    }
+}
+
+@Module class FeatureAFakeModule {
+    @Provides
+    fun provideShowGithubAction(toaster: Toaster): ShowGithubScreenAction = object : ShowGithubScreenAction {
+        override fun show(context: Context) {
+            toaster.show("Github feature is not injected")
         }
     }
 }
