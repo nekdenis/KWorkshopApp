@@ -7,6 +7,7 @@ import android.widget.TextView
 import com.kotlinsg.kworkshopapp.App
 import com.kotlinsg.kworkshopapp.GithubProject
 import com.kotlinsg.kworkshopapp.app.R
+import com.kotlinsg.kworkshopapp.notification.di.NotificationUseCase
 import com.kotlinsg.kworkshopapp.tools.Toaster
 import javax.inject.Inject
 
@@ -14,6 +15,7 @@ class GithubActivity : AppCompatActivity() {
 
     @Inject lateinit var toaster: Toaster
     @Inject lateinit var useCase: GithubUseCase
+    @Inject lateinit var notifications: NotificationUseCase
 
     lateinit var refreshButton: Button
     lateinit var starsCountText: TextView
@@ -27,6 +29,8 @@ class GithubActivity : AppCompatActivity() {
         starsCountText = findViewById(R.id.stars_count_text) as TextView
 
         refreshButton.setOnClickListener { useCase.loadInfoFromGithub(onLoaded = ::updateUI, onError = ::updateErrorUI) }
+
+        notifications.showMessage()
     }
 
     private fun updateErrorUI(error: Throwable) {

@@ -11,7 +11,7 @@ class GithubRepoImpl @Inject constructor(
 ) : GithubRepo {
 
     override fun getSampleProject(onResult: (GithubProject) -> Unit, onError: (Throwable) -> Unit) {
-        logger.d("requested project")
+        logger.d("requested  project")
         client.requestProject("kotlinsg/KWorkshopApp", onResult, onError)
     }
 

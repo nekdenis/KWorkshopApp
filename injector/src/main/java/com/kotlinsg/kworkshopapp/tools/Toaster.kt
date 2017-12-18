@@ -8,6 +8,6 @@ class ToasterImpl @Inject constructor(
         val appContext: Context
 ) : Toaster {
     override fun show(msg: String) {
-        Toast.makeText(appContext, "error updating project!", Toast.LENGTH_SHORT).show()
+        Toast.makeText(appContext, msg, Toast.LENGTH_SHORT).show()
     }
 }
